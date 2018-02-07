@@ -1,0 +1,102 @@
+* {
+  font-family: "AkzidenzGrotesk";
+}
+@-webkit-keyframes grow {
+    0%{
+    
+    -webkit-transform: scale(1,1);
+    }
+    25%{
+    
+    -webkit-transform: scale(1.1,1.1);
+    }
+    50%{
+    
+    -webkit-transform: scale(1,1);
+    } 
+    75%{
+    
+    -webkit-transform: scale(1.1,1.1);
+    } 
+    100%{
+    
+    -webkit-transform: scale(1,1);
+    }   
+}
+.grow {
+    -webkit-animation: grow 8s ease-in-out infinite;
+    position: absolute; 
+    top: 400px; 
+    font-size: 19px; 
+    width: 309px; 
+    height: 305px; 
+    left: 719px; 
+    background: url(../images/pi_launch.png); 
+    background-repeat: no-repeat;
+}
+#header_image {
+    position: fixed;
+}
+#questions {
+    position: fixed;
+    width: 360px;
+    color: white;
+    right: 0;
+    top: 15px;
+}
+#app{
+    background: url(../images/seek_find_welcome.png);
+    background-repeat: no-repeat;
+    margin: 0
+}
+#point {
+    position: fixed;
+    color: white;
+    font-weight: 400;
+    top: 146px;
+    right: 154px;
+    width: 60px;
+}
+#timer {
+    position: fixed;
+    color: white;
+    font-weight: 400;
+    top: 146px;
+    right: 15px;
+    width: 60px;
+}
+img[alt="pi"]{
+    width: 360px;
+    height: 450px;
+    position: absolute;
+    left: 120px;
+    top: 210px;
+}
+img[alt="mirra"]{
+    width: 360px;
+    height: 450px;
+    position: absolute;
+    left: 543px;
+    top: 210px;
+}
+#resource img{
+    width: 100%;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+}
+.load_next_scenario {
+    position: absolute;
+    top: 6px;
+    right: 0;
+}
+#next_question {
+    width: 200px;
+    position: absolute;
+    top: 15px;
+    right: 0;
+    color: white;
+}
+
+

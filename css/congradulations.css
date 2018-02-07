@@ -1,0 +1,35 @@
+header{
+  background-color: rgb(133,133,133);
+}
+
+.steps{
+  list-style: none;
+  float: left;
+}
+
+.steps li{
+  width: 170px;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.st{
+  float: right;
+  list-style: none;
+}
+
+.st li{
+  width: 60px;
+  display: inline-block;
+}
+.green{
+  color: rgb(120,189,85);
+}
+.white{
+  color: white;
+}
+.clearfix::after{
+  clear: both;
+  content: "";
+  display: table;
+}
