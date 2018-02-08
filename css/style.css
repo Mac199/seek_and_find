@@ -40,10 +40,11 @@ header {
 }
 #questions {
     position: fixed;
-    width: 360px;
+    width: 380px;
     color: white;
     right: 0;
-    top: 15px;
+    top: 10px;
+    line-height: 1;
 }
 #app{
     background: url(../images/seek_find_welcome.png);
@@ -57,6 +58,13 @@ header {
     top: 146px;
     right: 154px;
     width: 60px;
+}
+#final_point{
+    position: relative;
+    top: 521px;
+    color: red;
+    left: 380px;
+    display: none;
 }
 #timer {
     position: fixed;
@@ -316,6 +324,7 @@ img[alt="mirra"]{
     top: 1823px;
     left: 107px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi2_tp2_c"]{
     position: absolute;
@@ -328,6 +337,7 @@ img[alt="mirra"]{
     top: 2000px;
     left: 107px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi2_tp3_c"]{
     position: absolute;
@@ -340,6 +350,7 @@ img[alt="mirra"]{
     top: 2349px;
     left: 107px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi3_tp1_c"]{
     position: absolute;
@@ -352,6 +363,7 @@ img[alt="mirra"]{
     top: 3186px;
     left: 107px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi3_tp2_c"]{
     position: absolute;
@@ -364,6 +376,7 @@ img[alt="mirra"]{
     top: 3675px;
     left: 107px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi4_tp1_c"]{
     position: absolute;
@@ -376,6 +389,7 @@ img[alt="mirra"]{
     top: 4474px;
     left: 107px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi4_tp2_c"]{
     position: absolute;
@@ -388,6 +402,7 @@ img[alt="mirra"]{
     top: 4756px;
     left: 107px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi5_tp1_c"]{
     position: absolute;
@@ -400,6 +415,7 @@ img[alt="mirra"]{
     top: 6012px;
     left: 96px;
     width: 873px;
+    display: none;
 }
 #resource img[alt="pi6_tp1_c"]{
     position: absolute;
@@ -412,6 +428,7 @@ img[alt="mirra"]{
     top: 7365px;
     left: 106px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi7_tp1_c"]{
     position: absolute;
@@ -424,6 +441,7 @@ img[alt="mirra"]{
     top: 8572px;
     left: 106px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi8_tp1_c"]{
     position: absolute;
@@ -436,6 +454,7 @@ img[alt="mirra"]{
     top: 9562px;
     left: 106px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi8_tp2_c"]{
     position: absolute;
@@ -448,6 +467,7 @@ img[alt="mirra"]{
     top: 9880px;
     left: 106px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi9_tp1_c"]{
     position: absolute;
@@ -460,6 +480,7 @@ img[alt="mirra"]{
     top: 11366px;
     left: 106px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi10_tp1_c"]{
     position: absolute;
@@ -472,6 +493,7 @@ img[alt="mirra"]{
     top: 12283px;
     left: 106px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi10_tp2_c"]{
     position: absolute;
@@ -484,6 +506,7 @@ img[alt="mirra"]{
     top: 12781px;
     left: 106px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi13_tp1_c"]{
     position: absolute;
@@ -496,96 +519,104 @@ img[alt="mirra"]{
     top: 16339px;
     left: 106px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi14_tp1_c"]{
     position: absolute;
-    top: 17681px;
+    top: 17781px;
     left: 96px;
     width: 875px;
 }
 #resource img[alt="pi14_tp1_inc"]{
     position: absolute;
-    top: 17681px;
+    top: 17781px;
     left: 96px;
     width: 875px;
+    display: none;
 }
 #resource img[alt="pi15_tp1_c"]{
     position: absolute;
-    top: 18733px;
+    top: 18753px;
     left: 96px;
     width: 875px;
 }
 #resource img[alt="pi15_tp1_inc"]{
     position: absolute;
-    top: 18733px;
+    top: 18753px;
     left: 96px;
     width: 875px;
+    display: none;
 }
 #resource img[alt="pi17_tp1_c"]{
     position: absolute;
-    top: 21832px;
+    top: 21853px;
     left: 105px;
     width: 855px;
 }
 #resource img[alt="pi17_tp1_inc"]{
     position: absolute;
-    top: 21832px;
+    top: 21853px;
     left: 105px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi18_tp1_c"]{
     position: absolute;
-    top: 22722px;
+    top: 22741px;
     left: 105px;
     width: 855px;
     height: 1072px;
 }
 #resource img[alt="pi18_tp1_inc"]{
     position: absolute;
-    top: 22722px;
+    top: 22741px;
     left: 105px;
     width: 855px;
     height: 1072px;
+    display: none;
 }
 #resource img[alt="pi19_tp1_c"]{
     position: absolute;
-    top: 24789px;
+    top: 24809px;
     left: 105px;
     width: 855px;
 }
 #resource img[alt="pi19_tp1_inc"]{
     position: absolute;
-    top: 24789px;
+    top: 24809px;
     left: 105px;
     width: 855px;
+    display: none;
 }
 #resource img[alt="pi20_tp1_c"]{
     position: absolute;
-    top: 25789px;
+    top: 25809px;
     left: 98px;
     width: 866px;
     height: 550px;
 }
 #resource img[alt="pi20_tp1_inc"]{
     position: absolute;
-    top: 25789px;
+    top: 25809px;
     left: 98px;
     width: 866px;
     height: 550px;
+    display: none;
 }
 #resource img[alt="pi21_tp1_c"]{
     position: absolute;
-    top: 26784px;
+    top: 26808px;
     left: 105px;
     width: 854px;
     height: 224px;
 }
 #resource img[alt="pi21_tp1_inc"]{
     position: absolute;
-    top: 26784px;
+    top: 26808px;
     left: 105px;
     width: 854px;
     height: 224px;
+    display: none;
 }
 footer{
     position: fixed;
