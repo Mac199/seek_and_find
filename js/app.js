@@ -1,18 +1,24 @@
 $(document).ready(function(){
   var $footer = $('footer');
-  var number = 1;
+  
+  var scenario = 1;
+
+
   var $resource;
+  var correct_count = 0;
   var points = 0;
   $laucn = $("#laucn");
   $app = $("#app");
   $point = $("#point");
   $laucn.click(function(){ 
+
     $("#app").css('background-image',"url('images/select_resource.png')");
     $(".grow").remove();
     $app.append("<img src='images/pi/nucala_pi_01.jpg' alt='pi' class='resource'>"+"<img src='images/mirra_pages/mirra_page_1.jpg' alt='mirra' class='resource'>");
     event.preventDefault();
     timer();
-    $("#questions").html(activityJSON["question"+number]['question']);
+    $("#questions").html(activityJSON["question"+scenario]['question']);
+    $("#question_counter span").html(scenario);
   });
 
 
@@ -20,9 +26,12 @@ $(document).ready(function(){
   $('body').on('click','.resource',function(){    
     $resource = $(this).attr("alt");  
     $footer.css('display','inherit');
-    if($resource == activityJSON['question'+number]["answer1"]){
+    if($resource == activityJSON['question'+scenario]["answer1"]){
       points = points + 50;
       $point.html(points);
+
+      localStorage.setItem("points",points);
+
       if($("#next_question").length ==0 ){
         $footer.html("<img src='images/Screens/correct_resource.png'><button id='next_question'>NEXT QUESTION</button>");
       }else{$footer.css('display','inherit')};
@@ -31,7 +40,6 @@ $(document).ready(function(){
       $('#next_question').click(function(){
         $(".resource").css('display', 'none');
         $footer.css('display', 'none');
-        
         if($resource == "mirra"){
           $("#resource").append("<div class='page'><img src='images/mirra_pages/mirra_page_1.jpg' alt='mirra1'>"+
               //********* first page
@@ -247,12 +255,14 @@ $(document).ready(function(){
   //**************** CHOOSE THE CORRECT RESOURCE ENDS*****************//
 
   $("body").on("click", ".load_next_scenario", function() {  
-       number = number+1;
-       $("#questions").html(activityJSON['question'+number]["question"]);
+       scenario = parseInt(scenario)+1;
+       localStorage.setItem("scenario", scenario);
+       $("#question_counter span").html(scenario);
+       $("#questions").html(activityJSON['question'+scenario]["question"]);
        $footer.css('display', 'none');
        $("#resource .page").remove();
        $(".resource").css('display','inherit');
-       if(number == 16) {
+       if(scenario == 16) {
         $app.css('background-image',"url('/images/congrats.png')")
        }
   })
@@ -260,13 +270,18 @@ $(document).ready(function(){
 
    $('#resource').on('click','.answer',function(){    
    var result = $(this).attr('alt');
-   if(result == activityJSON['question'+number]["answer2"]){
+   if(result == activityJSON['question'+scenario]["answer2"]){
       points = points + 50;
       $point.html(points);
+
+      localStorage.setItem("points", points);
+      
       $(this).removeClass("answer");
       $time = $("#timer").text();
       $footer.css('display', 'inherit');
       $("#next_question").remove();
+      correct_count++;
+      $("#correct_count").html(correct_count);
       $footer.html("<img src='images/Screens/correct_datapoint.png'><img src='images/Buttons/load_next_scenario.png' class = 'load_next_scenario'>");
    }
    else{
