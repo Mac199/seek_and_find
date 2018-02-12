@@ -1,26 +1,28 @@
 $(document).ready(function(){
   var $footer = $('footer');
-  
-  var scenario = 1;
-
-
+  var scenario;
   var $resource;
-  var correct_count = 0;
-  var points = 0;
+  var correct_count;
   $laucn = $("#laucn");
   $app = $("#app");
-  $point = $("#point");
-  $laucn.click(function(){ 
+  var points;
 
+  $laucn.on("touchstart",function(){
+    $laucn.css("background-image","url(images/pi_launch_down.png)");
+  }).on("touchend", function(){
+
+    $point = $("#point");
     $("#app").css('background-image',"url('images/select_resource.png')");
-    $(".grow").remove();
+    $(".grow").css("display","none");
     $app.append("<img src='images/pi/nucala_pi_01.jpg' alt='pi' class='resource'>"+"<img src='images/mirra_pages/mirra_page_1.jpg' alt='mirra' class='resource'>");
     event.preventDefault();
     timer();
+    scenario = 1;
+    correct_count = 0;
     $("#questions").html(activityJSON["question"+scenario]['question']);
-    $("#question_counter span").html(scenario);
-  });
-
+    $("#question_counter span").html(0);
+    points = 0;
+    });
 
    //**************** CHOOSE THE CORRECT RESOURCE *****************//
   $('body').on('click','.resource',function(){    
@@ -33,7 +35,7 @@ $(document).ready(function(){
       localStorage.setItem("points",points);
 
       if($("#next_question").length ==0 ){
-        $footer.html("<img src='images/Screens/correct_resource.png'><button id='next_question'>NEXT QUESTION</button>");
+        $footer.html("<img src='images/Screens/correct_resource.png'><div id='next_question'>NEXT QUESTION</div>");
       }else{$footer.css('display','inherit')};
       
       
@@ -43,25 +45,28 @@ $(document).ready(function(){
         if($resource == "mirra"){
           $("#resource").append("<div class='page'><img src='images/mirra_pages/mirra_page_1.jpg' alt='mirra1'>"+
               //********* first page
-              "<img src='images/mirra_pages/M1_TP1_c.png' alt='m1_tp1_c' class='answer'>"+"<img src='images/mirra_pages/M1_TP1_incorrect.png' alt='m1_tp1_inc' class='answer'>"+
+              "<img src='images/mirra_pages/M1_TP1_c.png' alt='m1_tp1_c' class='answer'>"+"<img src='images/mirra_pages/M1_TP1_incorrect.png' alt='m1_tp1_inc' class='answer'>"+"<img src='images/Buttons/touchpoint.png' id='m1_tp1_c' class='touchpoint'>"+
               
-              "<img src='images/mirra_pages/M1_TP2_c.png' alt='m1_tp2_c' class='answer'>"+"<img src='images/mirra_pages/M1_TP2_incorrect.png' alt='m1_tp2_inc' class='answer'>"+
+              "<img src='images/mirra_pages/M1_TP2_c.png' alt='m1_tp2_c' class='answer'>"+"<img src='images/mirra_pages/M1_TP2_incorrect.png' alt='m1_tp2_inc' class='answer'>"+"<img src='images/Buttons/touchpoint2.png' id='m1_tp2_c' class='touchpoint'>"+
               
-              "<img src='images/mirra_pages/M1_TP3_c.png' alt='m1_tp3_c' class='answer'><img src='images/mirra_pages/M1_TP3_incorrect.png' alt='m1_tp3_inc' class='answer'></div>"+
+              "<img src='images/mirra_pages/M1_TP3_c.png' alt='m1_tp3_c' class='answer'><img src='images/mirra_pages/M1_TP3_incorrect.png' alt='m1_tp3_inc' class='answer'>"+"<img src='images/Buttons/touchpoint2.png' id='m1_tp3_c' class='touchpoint'>"+"</div>"+
               
               //************ seconde page
               "<div class='page'><img src='images/mirra_pages/mirra_page_2.jpg' alt='mirra2'>"+
               
-              "<img src='images/mirra_pages/M2_TP1_c.png' alt='m2_tp1_c' class='answer'>"+"<img src='images/mirra_pages/M2_TP1_incorrect.png' alt='m2_tp1_inc' class='answer'>"+
+              "<img src='images/mirra_pages/M2_TP1_c.png' alt='m2_tp1_c' class='answer'>"+"<img src='images/mirra_pages/M2_TP1_incorrect.png' alt='m2_tp1_inc' class='answer'>"+"<img src='images/Buttons/touchpoint2.png' id='m2_tp1_c' class='touchpoint'>"+
               
-              "<img src='images/mirra_pages/M2_TP2_c.png' alt='m2_tp2_c' class='answer'>"+"<img src='images/mirra_pages/M2_TP2_incorrect.png' alt='m2_tp2_inc' class='answer'>"+
+              "<img src='images/mirra_pages/M2_TP2_c.png' alt='m2_tp2_c' class='answer'>"+"<img src='images/mirra_pages/M2_TP2_incorrect.png' alt='m2_tp2_inc' class='answer'>"+"<img src='images/Buttons/touchpoint.png' id='m2_tp2_c' class='touchpoint'>"+
 
-              "<img src='images/mirra_pages/M2_TP3_c.png' alt='m2_tp3_c' class='answer'><img src='images/mirra_pages/M2_TP3_incorrect.png' alt='m2_tp3_inc' class='answer'></div>"+
+              "<img src='images/mirra_pages/M2_TP3_c.png' alt='m2_tp3_c' class='answer'><img src='images/mirra_pages/M2_TP3_incorrect.png' alt='m2_tp3_inc' class='answer'>"+"<img src='images/Buttons/touchpoint2.png' id='m2_tp3_c' class='touchpoint'>"+
+              "</div>"+
               
               
               //*********** third page
               "<div class='page'><img src='images/mirra_pages/mirra_page_3.jpg' alt='mirra3'>"+
-              "<img src='images/mirra_pages/M3_TP1_c.png' alt='m3_tp1_c' class='answer'><img src='images/mirra_pages/M3_TP1_incorrect.png' alt='m3_tp1_inc' class='answer'>"+
+              "<img src='images/mirra_pages/M3_TP1_c.png' alt='m3_tp1_c' class='answer'>"+
+              "<img src='images/mirra_pages/M3_TP1_incorrect.png' alt='m3_tp1_inc' class='answer'>"+
+              "<img src='images/Buttons/touchpoint2.png' id='m3_tp1_c' class='touchpoint'>"+
               "</div>"+
               
               
@@ -71,14 +76,19 @@ $(document).ready(function(){
               
               //************ 5 page
               "<div class='page'><img src='images/mirra_pages/mirra_page_5.jpg' alt='mirra5'>"+
-              "<img src='images/mirra_pages/M5_TP1_c.png' alt='m5_tp1_c' class='answer'>"+"<img src='images/mirra_pages/M5_TP1_incorrect.png' alt='m5_tp1_inc' class='answer'>"+
+              "<img src='images/mirra_pages/M5_TP1_c.png' alt='m5_tp1_c' class='answer'>"+
+              "<img src='images/mirra_pages/M5_TP1_incorrect.png' alt='m5_tp1_inc' class='answer'>"+
+              "<img src='images/Buttons/touchpoint2.png' id='m5_tp1_c' class='touchpoint'>"+
               "</div>"+
               
               
 
               //************ 6 page
               "<div class='page'><img src='images/mirra_pages/mirra_page_6.jpg' alt='mirra6'>"+
-              "<img src='images/mirra_pages/M6_TP1_c.png' alt='m6_tp1_c' class='answer'><img src='images/mirra_pages/M6_TP1_incorrect.png' alt='m6_tp1_inc' class='answer'></div>"+
+              "<img src='images/mirra_pages/M6_TP1_c.png' alt='m6_tp1_c' class='answer'>"+
+              "<img src='images/mirra_pages/M6_TP1_incorrect.png' alt='m6_tp1_inc' class='answer'>"+
+              "<img src='images/Buttons/touchpoint2.png' id='m6_tp1_c' class='touchpoint'>"+
+              "</div>"+
               
               
               //************ 7 page
@@ -87,23 +97,43 @@ $(document).ready(function(){
               
               //************ 8 page
               "<div class='page'><img src='images/mirra_pages/mirra_page_8.jpg' alt='mirra8'>"+
-              "<img src='images/mirra_pages/M8_TP1_c.png' alt='m8_tp1_c' class='answer'>"+"<img src='images/mirra_pages/M8_TP1_incorrect.png' alt='m8_tp1_inc' class='answer'>"+
-              "<img src='images/mirra_pages/M8_TP2_c.png' alt='m8_tp2_c' class='answer'>"+"<img src='images/mirra_pages/M8_TP2_incorrect.png' alt='m8_tp2_inc' class='answer'>"+
-              "<img src='images/mirra_pages/M8_TP3_c.png' alt='m8_tp3_c' class='answer'>"+"<img src='images/mirra_pages/M8_TP3_incorrect.png' alt='m8_tp3_inc' class='answer'>"
-              +"<img src='images/mirra_pages/M8_TP4_c.png' alt='m8_tp4_c' class='answer'>"+"<img src='images/mirra_pages/M8_TP4_incorrect.png' alt='m8_tp4_inc' class='answer'>"+
+              "<img src='images/mirra_pages/M8_TP1_c.png' alt='m8_tp1_c' class='answer'>"+
+              "<img src='images/mirra_pages/M8_TP1_incorrect.png' alt='m8_tp1_inc' class='answer'>"+
+              "<img src='images/Buttons/touchpoint.png' id='m8_tp1_c' class='touchpoint'>"+
+              
+              "<img src='images/mirra_pages/M8_TP2_c.png' alt='m8_tp2_c' class='answer'>"+
+              "<img src='images/mirra_pages/M8_TP2_incorrect.png' alt='m8_tp2_inc' class='answer'>"+
+              "<img src='images/Buttons/touchpoint.png' id='m8_tp2_c' class='touchpoint'>"+
+              
+              "<img src='images/mirra_pages/M8_TP3_c.png' alt='m8_tp3_c' class='answer'>"+
+              "<img src='images/mirra_pages/M8_TP3_incorrect.png' alt='m8_tp3_inc' class='answer'>"+
+              "<img src='images/Buttons/touchpoint2.png' id='m8_tp3_c' class='touchpoint'>"
+              
+
+              +"<img src='images/mirra_pages/M8_TP4_c.png' alt='m8_tp4_c' class='answer'>"+
+              "<img src='images/mirra_pages/M8_TP4_incorrect.png' alt='m8_tp4_inc' class='answer'>"+
+              "<img src='images/Buttons/touchpoint.png' id='m8_tp4_c' class='touchpoint'>"+
               "</div>"+
               
               
               //************ 9 page
               "<div class='page'><img src='images/mirra_pages/mirra_page_9.jpg' alt='mirra9'>"+
-              "<img src='images/mirra_pages/M9_TP1_c.png' alt='m9_tp1_c' class='answer'>"+"<img src='images/mirra_pages/M9_TP1_incorrect.png' alt='m9_tp1_inc' class='answer'>"+
+              "<img src='images/mirra_pages/M9_TP1_c.png' alt='m9_tp1_c' class='answer'>"+
+              "<img src='images/mirra_pages/M9_TP1_incorrect.png' alt='m9_tp1_inc' class='answer'>"+
+              "<img src='images/Buttons/touchpoint2.png' id='m9_tp1_c' class='touchpoint'>"+
               "</div>"+
               
               
               //************ 10 page
               "<div class='page'><img src='images/mirra_pages/mirra_page_10.jpg' alt='mirra10'>"+
-              "<img src='images/mirra_pages/M10_TP1_c.png' alt='m10_tp1_c' class='answer'>"+"<img src='images/mirra_pages/M10_TP1_incorrect.png' alt='m10_tp1_inc' class='answer'>"+
-              "<img src='images/mirra_pages/M10_TP2_c.png' alt='m10_tp2_c' class='answer'>"+"<img src='images/mirra_pages/M10_TP2_incorrect.png' alt='m10_tp2_inc' class='answer'>"+
+              "<img src='images/mirra_pages/M10_TP1_c.png' alt='m10_tp1_c' class='answer'>"+
+              
+              "<img src='images/mirra_pages/M10_TP1_incorrect.png' alt='m10_tp1_inc' class='answer'>"+
+              "<img src='images/Buttons/touchpoint2.png' id='m10_tp1_c' class='touchpoint'>"+
+
+              "<img src='images/mirra_pages/M10_TP2_c.png' alt='m10_tp2_c' class='answer'>"+
+              "<img src='images/mirra_pages/M10_TP2_incorrect.png' alt='m10_tp2_inc' class='answer'>"+
+              "<img src='images/Buttons/touchpoint.png' id='m10_tp2_c' class='touchpoint'>"+
               "</div>"+
               
               
@@ -120,26 +150,46 @@ $(document).ready(function(){
 
                               //********* 2 page
                               "<div class='page'><img src='images/pi/nucala_pi_02.jpg' alt='pi2'>"+
-                              "<img src='images/pi/P2_TP1_c.png' alt='pi2_tp1_c' class='answer'>"+"<img src='images/pi/P2_TP1_incorrect.png' alt='pi2_tp1_inc' class='answer'>"+
-                              "<img src='images/pi/P2_TP2_c.png' alt='pi2_tp2_c' class='answer'>"+"<img src='images/pi/P2_TP2_incorrect.png' alt='pi2_tp2_inc' class='answer'>"+
-                              "<img src='images/pi/P2_TP3_c.png' alt='pi2_tp3_c' class='answer'>"+"<img src='images/pi/P2_TP3_incorrect.png' alt='pi2_tp3_inc' class='answer'>"+
+                              "<img src='images/pi/P2_TP1_c.png' alt='pi2_tp1_c' class='answer'>"+
+                              "<img src='images/pi/P2_TP1_incorrect.png' alt='pi2_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi2_tp1_c' class='touchpoint'>"+
+                              
+                              "<img src='images/pi/P2_TP2_c.png' alt='pi2_tp2_c' class='answer'>"+
+                              "<img src='images/pi/P2_TP2_incorrect.png' alt='pi2_tp2_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi2_tp2_c' class='touchpoint'>"+
+                              
+                              "<img src='images/pi/P2_TP3_c.png' alt='pi2_tp3_c' class='answer'>"+
+                              "<img src='images/pi/P2_TP3_incorrect.png' alt='pi2_tp3_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi2_tp3_c' class='touchpoint'>"+
                               "</div>"+
                               
                               //********* 3 page
                               "<div class='page'><img src='images/pi/nucala_pi_03.jpg' alt='pi3'>"+
-                              "<img src='images/pi/P3_TP1_c.png' alt='pi3_tp1_c' class='answer'>"+"<img src='images/pi/P3_TP1_incorrect.png' alt='pi3_tp1_inc' class='answer' class='answer'>"+
-                              "<img src='images/pi/P3_TP2_c.png' alt='pi3_tp2_c' class='answer'>"+"<img src='images/pi/P3_TP2_incorrect.png' alt='pi3_tp2_inc' class='answer' class='answer'>"+
+                              "<img src='images/pi/P3_TP1_c.png' alt='pi3_tp1_c' class='answer'>"+
+                              "<img src='images/pi/P3_TP1_incorrect.png' alt='pi3_tp1_inc' class='answer' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi3_tp1_c' class='touchpoint'>"+
+                              
+                              "<img src='images/pi/P3_TP2_c.png' alt='pi3_tp2_c' class='answer'>"+
+                              "<img src='images/pi/P3_TP2_incorrect.png' alt='pi3_tp2_inc' class='answer' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi3_tp2_c' class='touchpoint'>"+
                               "</div>"+
                               
                               //********* 4 page
                               "<div class='page'><img src='images/pi/nucala_pi_04.jpg' alt='pi4'>"+
-                              "<img src='images/pi/P4_TP1_c.png' alt='pi4_tp1_c' class='answer'>"+"<img src='images/pi/P4_TP1_incorrect.png' alt='pi4_tp1_inc' class='answer'>"+
-                              "<img src='images/pi/P4_TP2_c.png' alt='pi4_tp2_c' class='answer'>"+"<img src='images/pi/P4_TP2_incorrect.png' alt='pi4_tp2_inc' class='answer'>"+
+                              "<img src='images/pi/P4_TP1_c.png' alt='pi4_tp1_c' class='answer'>"+
+                              "<img src='images/pi/P4_TP1_incorrect.png' alt='pi4_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi4_tp1_c' class='touchpoint'>"+
+
+                              "<img src='images/pi/P4_TP2_c.png' alt='pi4_tp2_c' class='answer'>"+
+                              "<img src='images/pi/P4_TP2_incorrect.png' alt='pi4_tp2_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi4_tp2_c' class='touchpoint'>"+
                               "</div>"+
                               
                               //********* 5
                               "<div class='page'><img src='images/pi/nucala_pi_05.jpg' alt='pi5'>"+
-                              "<img src='images/pi/P5_TP1_c.png' alt='pi5_tp1_c' class='answer'>"+"<img src='images/pi/P5_TP1_incorrect.png' alt='pi5_tp1_inc' class='answer'>"+
+                              "<img src='images/pi/P5_TP1_c.png' alt='pi5_tp1_c' class='answer'>"+
+                              "<img src='images/pi/P5_TP1_incorrect.png' alt='pi5_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi5_tp1_c' class='touchpoint'>"+
                               "</div>"+
                               
 
@@ -147,6 +197,7 @@ $(document).ready(function(){
                               "<div class='page'><img src='images/pi/nucala_pi_06.jpg' alt='pi6'>"+
                               "<img src='images/pi/P6_TP1_c.png' alt='pi6_tp1_c' class='answer'>"+
                               "<img src='images/pi/P6_TP1_incorrect.png' alt='pi6_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi6_tp1_c' class='touchpoint'>"+
                               "</div>"+
                               
 
@@ -154,24 +205,40 @@ $(document).ready(function(){
                               "<div class='page'><img src='images/pi/nucala_pi_07.jpg' alt='pi7'>"+
                               "<img src='images/pi/P7_TP1_c.png' alt='pi7_tp1_c' class='answer'>"+
                               "<img src='images/pi/P7_TP1_incorrect.png' alt='pi7_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi7_tp1_c' class='touchpoint'>"+
                               "</div>"+
                               
 
                               //********* 8
                               "<div class='page'><img src='images/pi/nucala_pi_08.jpg' alt='pi8'>"+
-                              "<img src='images/pi/P8_TP1_c.png' alt='pi8_tp1_c' class='answer'>"+"<img src='images/pi/P8_TP1_incorrect.png' alt='pi8_tp1_inc' class='answer'>"+
-                              "<img src='images/pi/P8_TP2_c.png' alt='pi8_tp2_c' class='answer'><img src='images/pi/P8_TP2_incorrect.png' alt='pi8_tp2_inc' class='answer'></div>"+
+                              "<img src='images/pi/P8_TP1_c.png' alt='pi8_tp1_c' class='answer'>"+
+                              "<img src='images/pi/P8_TP1_incorrect.png' alt='pi8_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi8_tp1_c' class='touchpoint'>"+
+
+                              "<img src='images/pi/P8_TP2_c.png' alt='pi8_tp2_c' class='answer'>"+
+                              "<img src='images/pi/P8_TP2_incorrect.png' alt='pi8_tp2_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi8_tp2_c' class='touchpoint'>"+
+                              "</div>"+
                               
 
                               //********* 9
                               "<div class='page'><img src='images/pi/nucala_pi_09.jpg' alt='pi9'>"+
-                              "<img src='images/pi/P9_TP1_c.png' alt='pi9_tp1_c' class='answer'><img src='images/pi/P9_TP1_incorrect.png' alt='pi9_tp1_inc' class='answer'></div>"+
+                              "<img src='images/pi/P9_TP1_c.png' alt='pi9_tp1_c' class='answer'>"+
+                              "<img src='images/pi/P9_TP1_incorrect.png' alt='pi9_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi9_tp1_c' class='touchpoint'>"+
+                              "</div>"+
                               
 
                               //********* 10
                               "<div class='page'><img src='images/pi/nucala_pi_10.jpg' alt='pi10'>"+
-                              "<img src='images/pi/P10_TP1_c.png' alt='pi10_tp1_c' class='answer'>"+"<img src='images/pi/P10_TP1_incorrect.png' alt='pi10_tp1_inc' class='answer'>"+
-                              "<img src='images/pi/P10_TP2_c.png' alt='pi10_tp2_c' class='answer'><img src='images/pi/P10_TP2_incorrect.png' alt='pi10_tp2_inc' class='answer'></div>"+
+                              "<img src='images/pi/P10_TP1_c.png' alt='pi10_tp1_c' class='answer'>"+
+                              "<img src='images/pi/P10_TP1_incorrect.png' alt='pi10_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi10_tp1_c' class='touchpoint'>"+
+                              
+                              "<img src='images/pi/P10_TP2_c.png' alt='pi10_tp2_c' class='answer'>"+
+                              "<img src='images/pi/P10_TP2_incorrect.png' alt='pi10_tp2_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi10_tp2_c' class='touchpoint'>"+
+                              "</div>"+
                               
 
                               //********* 11
@@ -183,8 +250,10 @@ $(document).ready(function(){
                               
 
                               //********* 13
-                              "<div class='page'><img src='images/pi/nucala_pi_13.jpg' alt='pi13'><img src='images/pi/P13_TP1_c.png' alt='pi13_tp1_c' class='answer'>"+
+                              "<div class='page'><img src='images/pi/nucala_pi_13.jpg' alt='pi13'>"+
+                              "<img src='images/pi/P13_TP1_c.png' alt='pi13_tp1_c' class='answer'>"+
                               "<img src='images/pi/P13_TP1_incorrect.png' alt='pi13_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi13_tp1_c' class='touchpoint'>"
                               +"</div>"+
                               
 
@@ -192,12 +261,16 @@ $(document).ready(function(){
                               "<div class='page'><img src='images/pi/nucala_pi_14.jpg' alt='pi14'>"+
                               "<img src='images/pi/P14_TP1_c.png' alt='pi14_tp1_c' class='answer'>"+
                               "<img src='images/pi/P14_TP1_incorrect.png' alt='pi14_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi14_tp1_c' class='touchpoint'>"+
                               "</div>"+
                               
 
                               //********* 15
                               "<div class='page'><img src='images/pi/nucala_pi_15.jpg' alt='pi15'>"+
-                              "<img src='images/pi/P15_TP1_c.png' alt='pi15_tp1_c' class='answer'><img src='images/pi/P15_TP1_incorrect.png' alt='pi15_tp1_inc' class='answer'></div>"+
+                              "<img src='images/pi/P15_TP1_c.png' alt='pi15_tp1_c' class='answer'>"+
+                              "<img src='images/pi/P15_TP1_incorrect.png' alt='pi15_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi15_tp1_c' class='touchpoint'>"+
+                              "</div>"+
                               
 
                               //********* 16
@@ -207,31 +280,41 @@ $(document).ready(function(){
                               //********* 17
                               "<div class='page'><img src='images/pi/nucala_pi_17.jpg' alt='pi17'>"+
                               "<img src='images/pi/P17_TP1_c.png' alt='pi17_tp1_c' class='answer'>"+
-                              "<img src='images/pi/P17_TP1_incorrect.png' alt='pi17_tp1_inc' class='answer'></div>"+
+                              "<img src='images/pi/P17_TP1_incorrect.png' alt='pi17_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi17_tp1_c' class='touchpoint'>"+
+                              "</div>"+
                               
 
                               //********* 18
                               "<div class='page'><img src='images/pi/nucala_pi_18.jpg' alt='pi18'>"+
                               "<img src='images/pi/P18_TP1_c.png' alt='pi18_tp1_c' class='answer'>"+
-                              "<img src='images/pi/P18_TP1_incorrect.png' alt='pi18_tp1_inc' class='answer'></div>"+
+                              "<img src='images/pi/P18_TP1_incorrect.png' alt='pi18_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi18_tp1_c' class='touchpoint'>"+
+                              "</div>"+
                               
 
                               //********* 19
                               "<div class='page'><img src='images/pi/nucala_pi_19.jpg' alt='pi19'>"+
                               "<img src='images/pi/P19_TP1_c.png' alt='pi19_tp1_c' class='answer'>"+
-                              "<img src='images/pi/P19_TP1_incorrect.png' alt='pi19_tp1_inc' class='answer'></div>"+
+                              "<img src='images/pi/P19_TP1_incorrect.png' alt='pi19_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi19_tp1_c' class='touchpoint'>"+
+                              "</div>"+
                               
 
                               //********* 20
                               "<div class='page'><img src='images/pi/nucala_pi_20.jpg' alt='pi20'>"+
                               "<img src='images/pi/P20_TP1_c.png' alt='pi20_tp1_c' class='answer'>"+
-                              "<img src='images/pi/P20_TP1_incorrect.png' alt='pi20_tp1_inc' class='answer'></div>"+
+                              "<img src='images/pi/P20_TP1_incorrect.png' alt='pi20_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi20_tp1_c' class='touchpoint'>"+
+                              "</div>"+
                               
 
                               //********* 21
                               "<div class='page'><img src='images/pi/nucala_pi_21.jpg' alt='pi21'>"+
                               "<img src='images/pi/P21_TP1_c.png' alt='pi21_tp1_c' class='answer'>"+
-                              "<img src='images/pi/P21_TP1_incorrect.png' alt='pi21_tp1_inc' class='answer'></div>"+
+                              "<img src='images/pi/P21_TP1_incorrect.png' alt='pi21_tp1_inc' class='answer'>"+
+                              "<img src='images/Buttons/touchpoint.png' id='pi21_tp1_c' class='touchpoint'>"+
+                              "</div>"+
                               
 
                               //********* 22
@@ -254,7 +337,9 @@ $(document).ready(function(){
   });
   //**************** CHOOSE THE CORRECT RESOURCE ENDS*****************//
 
-  $("body").on("click", ".load_next_scenario", function() {  
+  $("body").on("touchstart", ".load_next_scenario", function() {  
+      $(".load_next_scenario").attr("src","images/Buttons/load_next_scenario_down.png");
+  }).on("touchend", ".load_next_scenario", function(){
        scenario = parseInt(scenario)+1;
        localStorage.setItem("scenario", scenario);
        $("#question_counter span").html(scenario);
@@ -262,41 +347,37 @@ $(document).ready(function(){
        $footer.css('display', 'none');
        $("#resource .page").remove();
        $(".resource").css('display','inherit');
-       if(scenario == 16) {
-        $app.css('background-image',"url('/images/congrats.png')")
-       }
   })
-
 
    $('#resource').on('click','.answer',function(){    
    var result = $(this).attr('alt');
    if(result == activityJSON['question'+scenario]["answer2"]){
+      $(this).css("opacity","inherit");
       points = points + 50;
       $point.html(points);
-
       localStorage.setItem("points", points);
-      
-      $(this).removeClass("answer");
+      $("#"+result).css("display","none");
       $time = $("#timer").text();
       $footer.css('display', 'inherit');
       $("#next_question").remove();
       correct_count++;
       $("#correct_count").html(correct_count);
+      localStorage.setItem("correct_count", correct_count);
       $footer.html("<img src='images/Screens/correct_datapoint.png'><img src='images/Buttons/load_next_scenario.png' class = 'load_next_scenario'>");
    }
    else{
      $footer.html("<img src='images/Screens/incorrect_datapoint.png' class='incorrect_datapoint'>");
      $footer.css('display','inherit');
-     $(this).css('display','none');
-     $(this).next().css('display','inherit');
+     $(this).next().css("opacity","inherit");
+     $(this).next().css("display","inherit");
+     $("#"+result).css("display","none");
+     $(this).next().removeClass("answer");
    }
   }) 
-//****************** count time ************//
-    // if($time == "0:00"){
-    //   $app.css('background-image',"url('images/congrats.png')");
-    //   $('#resource .page').remove();
-    //   $("#final_point").html(points).css('display','inherit');
-    // };
+  $("#return").click(function(event) {
+        window.location.href="../index.html";      
+
+  });       
 
 
 });// ********** Document ready ends ***********//

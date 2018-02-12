@@ -23,40 +23,53 @@
     -webkit-transform: scale(1,1);
     }   
 }
+#return{
+    position: absolute;
+}
 .grow {
     -webkit-animation: grow 8s ease-in-out infinite;
     position: absolute; 
-    top: 400px; 
+    top: 391px; 
     font-size: 19px; 
     width: 309px; 
     height: 305px; 
-    left: 719px; 
+    left: 714px; 
     background: url(../images/pi_launch.png); 
     background-repeat: no-repeat;
+    z-index: 3;
 }
 header {
     position: fixed;
     z-index: 1;
+    width: 1024px;
 }
 #questions {
     position: fixed;
     width: 380px;
     color: white;
-    right: 0;
+    left: 649px;
     top: 10px;
     line-height: 1;
+}
+#question_counter{
+    position: fixed;
+    top: 100px;
+    left: 550px;
+    color: white;
 }
 #app{
     background: url(../images/seek_find_welcome.png);
     background-repeat: no-repeat;
-    margin: 0
+    margin: 0;
+    height: 768px;
+    width: 1024px;
 }
 #point {
     position: fixed;
     color: white;
     font-weight: 400;
     top: 146px;
-    right: 154px;
+    left: 814px;
     width: 60px;
     z-index: 2;
 }
@@ -82,6 +95,7 @@ header {
     left: 590px;
     font-size: 50px;
     width: 150px;
+    display: none;
 }
 #time_bonus{
     position: relative;
@@ -95,14 +109,15 @@ header {
     top: 326px;
     left: 591px;
     font-size: 50px;
-    width: 150px
+    width: 150px;
+    display: none;
 }
 #timer {
     position: fixed;
     color: white;
     font-weight: 400;
     top: 146px;
-    right: 15px;
+    left: 945px;
     width: 60px;
 }
 img[alt="pi"]{
@@ -122,15 +137,21 @@ img[alt="mirra"]{
 #resource {
     position: relative;
     top: 169px;
+    overflow: scroll;
+    height: 570px;
 }
 #resource img{
     width: 100%;
+}
+.answer{
+    opacity: 0;
 }
 #resource img[alt="m1_tp1_c"]{
     position: absolute;
     top: 649px;
     left: 722px;
     width: 291px;
+    opacity: 0;
 }
 #resource img[alt="m1_tp1_inc"]{
     position: absolute;
@@ -138,12 +159,14 @@ img[alt="mirra"]{
     left: 722px;
     width: 291px;
     display: none;
+    opacity: 0;
 }
 #resource img[alt="m1_tp2_c"]{
     position: absolute;
     top: 789px;
     left: 45px;
     width: 686px;
+    opacity: 0;
 }
 #resource img[alt="m1_tp2_inc"]{
     position: absolute;
@@ -151,12 +174,14 @@ img[alt="mirra"]{
     left: 45px;
     width: 686px;
     display: none;
+    opacity: 0;
 }
 #resource img[alt="m1_tp3_c"]{
     position: absolute;
     top: 1099px;
     left: 45px;
     width: 686px;
+    opacity: 0;
 }
 #resource img[alt="m1_tp3_inc"]{
     position: absolute;
@@ -649,9 +674,204 @@ img[alt="mirra"]{
     height: 224px;
     display: none;
 }
+#resource #m1_tp1_c{
+    top: 699px;
+    right: 9px;
+}
+#resource #m1_tp2_c{
+    top: 861px;
+    left: 47px;
+}
+#resource #m1_tp3_c{
+    top: 1150px;
+    left: 47px;
+}
+#resource #m2_tp1_c{
+    top: 1530px;
+    left: 117px;
+}
+#resource #m2_tp2_c{
+    top: 1710px;
+    right: 57px;
+}
+#resource #m2_tp3_c{
+    top: 2231px;
+    right: 837px;
+}
+#resource #m3_tp1_c{
+    top: 3541px;
+    left: 47px;
+}
+#resource #m5_tp1_c{
+    top: 6211px;
+    left: 47px;
+}
+#resource #m6_tp1_c{
+    top: 7778px;
+    left: 120px;
+}
+#resource #m8_tp1_c{
+    top: 9868px;
+    right: 56px;
+}
+#resource #m8_tp2_c{
+    top: 9928px;
+    right: 306px;
+}
+#resource #m8_tp3_c{
+    top: 10598px;
+    left: 117px;
+}
+#resource #m8_tp4_c{
+    top: 10408px;
+    right: 57px;
+}
+#resource #m9_tp1_c{
+    top: 11858px;
+    left: 57px;
+}
+#resource #m10_tp1_c{
+    top: 12738px;
+    left: 1px;
+}
+#resource #m10_tp2_c{
+    top: 12856px;
+    right: 60px;
+}
+#resource .touchpoint{
+    position: absolute;
+    width: 65px;
+    height: 64px;
+}
+#resource #pi2_tp1_c{
+    top: 1850px;
+    right: 60px;
+
+}
+#resource #pi2_tp2_c{
+    top: 2100px;
+    right: 60px;
+
+}
+#resource #pi2_tp3_c{
+    top: 2100px;
+    right: 60px;
+
+}
+#resource #pi2_tp3_c{
+    top: 2390px;
+    right: 60px;
+
+}
+#resource #pi3_tp1_c{
+    top: 3240px;
+    right: 60px;
+
+}
+#resource #pi3_tp2_c{
+    top: 3710px;
+    right: 60px;
+
+}
+#resource #pi4_tp1_c{
+    top: 4510px;
+    right: 60px;
+
+}
+#resource #pi4_tp2_c{
+    top: 4840px;
+    right: 60px;
+
+}
+#resource #pi5_tp1_c{
+    top: 6230px;
+    right: 60px;
+
+}
+#resource #pi6_tp1_c{
+    top: 7470px;
+    right: 60px;
+
+}
+#resource #pi7_tp1_c{
+    top: 8770px;
+    right: 60px;
+
+}
+#resource #pi8_tp1_c{
+    top: 9590px;
+    right: 60px;
+
+}
+#resource #pi8_tp2_c{
+    top: 10020px;
+    right: 60px;
+
+}
+#resource #pi9_tp1_c{
+    top: 11560px;
+    right: 60px;
+
+}
+#resource #pi10_tp1_c{
+    top: 12360px;
+    right: 60px;
+
+}
+#resource #pi10_tp2_c{
+    top: 12930px;
+    right: 60px;
+
+}
+#resource #pi13_tp1_c{
+    top: 16430px;
+    right: 60px;
+
+}
+#resource #pi14_tp1_c{
+    top: 17910px;
+    right: 60px;
+
+}
+#resource #pi15_tp1_c{
+    top: 19120px;
+    right: 60px;
+
+}
+#resource #pi17_tp1_c{
+    top: 22120px;
+    right: 60px;
+
+}
+#resource #pi18_tp1_c{
+    top: 23120px;
+    right: 60px;
+
+}
+#resource #pi19_tp1_c{
+    top: 24910px;
+    right: 60px;
+
+}
+#resource #pi20_tp1_c{
+    top: 26050px;
+    right: 60px;
+
+}
+#resource #pi21_tp1_c{
+    top: 26869px;
+    right: 60px;
+
+}
 footer{
     position: fixed;
-    bottom: 0;
+    top: 701px;
+}
+.play_again_footer{
+    width: 1024px; 
+    height: 40px;
+    position: relative;
+    top:8px;
 }
 .load_next_scenario {
     position: absolute;
@@ -664,6 +884,14 @@ footer{
     top: 15px;
     right: 0;
     color: white;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.play_again{
+    float: right;
 }
 
 
