@@ -12,7 +12,7 @@ $(document).ready(function(){
   }).on("touchend", function(){
 
     $point = $("#point");
-    $("#app").css('background-image',"url('images/select_resource.png')");
+    $("#app").css('background-image',"url('images/Select_Resource.png')");
     $(".grow").css("display","none");
     $app.append("<img src='images/pi/nucala_pi_01.jpg' alt='pi' class='resource'>"+"<img src='images/mirra_pages/mirra_page_1.jpg' alt='mirra' class='resource'>");
     event.preventDefault();
